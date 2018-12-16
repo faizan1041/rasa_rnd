@@ -1,0 +1,48 @@
+Transform the passed names of the pipeline components into classes
+_build_pipeline line 158 rasa_nlu/model.py
+if pipeline: spacy_sklearn 
+    cfg.component_names = ['nlp_spacy', 'tokenizer_spacy', 'intent_featurizer_spacy', 'intent_entity_featurizer_regex', 'ner_crf', 'ner_synonyms', 'intent_classifier_sklearn']
+    pipelines = [
+    <rasa_nlu.utils.spacy_utils.SpacyNLP object at 0x7fa41df49550>, 
+    <rasa_nlu.tokenizers.spacy_tokenizer.SpacyTokenizer object at 0x7fa41df49588>, 
+    <rasa_nlu.featurizers.spacy_featurizer.SpacyFeaturizer object at 0x7fa41df495f8>, 
+    <rasa_nlu.featurizers.regex_featurizer.RegexFeaturizer object at 0x7fa41df49668>, 
+    <rasa_nlu.extractors.crf_entity_extractor.CRFEntityExtractor object at 0x7fa41df496a0>, 
+    <rasa_nlu.extractors.entity_synonyms.EntitySynonymMapper object at 0x7fa41ebf79b0>, 
+    <rasa_nlu.classifiers.sklearn_intent_classifier.SklearnIntentClassifier object at 0x7fa41eea9550>] 
+
+
+
+if pipeline: tensorflow_embedding
+    cfg.component_names = ['tokenizer_whitespace', 'ner_crf', 'ner_synonyms', 'intent_featurizer_count_vectors', 'intent_classifier_tensorflow_embedding']    
+    pipelines = [
+    <rasa_nlu.tokenizers.whitespace_tokenizer.WhitespaceTokenizer object at 0x7fdd44f1b2e8>, 
+    <rasa_nlu.extractors.crf_entity_extractor.CRFEntityExtractor object at 0x7fdd3e0c7ba8>, 
+    <rasa_nlu.extractors.entity_synonyms.EntitySynonymMapper object at 0x7fdd3e0c7c50>, 
+    <rasa_nlu.featurizers.count_vectors_featurizer.CountVectorsFeaturizer object at 0x7fdd12ee85f8>, 
+    <rasa_nlu.classifiers.embedding_intent_classifier.EmbeddingIntentClassifier object at 0x7fdd12ee8630>]
+
+    component.train(working_data, self.config,**context)
+
+
+/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/en_core_web_sm
+-->
+/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/spacy/data/en
+
+utils/spacy_utils.py line 125 model en
+
+Call stack for training 
+ File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/train.py", line 184, in <module>
+    num_threads=cmdline_args.num_threads)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/train.py", line 148, in do_train
+    trainer = Trainer(cfg, component_builder)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/model.py", line 155, in __init__
+    self.pipeline = self._build_pipeline(cfg, component_builder)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/model.py", line 165, in _build_pipeline
+    component_name, cfg)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/components.py", line 441, in create_component
+    cfg)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/registry.py", line 143, in create_component_by_name
+    return component_clz.create(config)
+  File "/home/faizan/code/chatbot-dev/rasa/naresh/env/lib/python3.6/site-packages/rasa_nlu/utils/spacy_utils.py", line 73, in create
+    nlp = spacy.load(spacy_model_name, parser=False)
